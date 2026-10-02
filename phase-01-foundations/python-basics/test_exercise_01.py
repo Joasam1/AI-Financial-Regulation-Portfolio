@@ -16,6 +16,7 @@ def test_calculate_indicators() -> None:
     result = calculate_indicators(record)
     assert result["npl_ratio_pct"] == pytest.approx(10.0)
     assert result["capital_ratio_pct"] == pytest.approx(15.0)
+    assert result["performing_to_npl_ratio"] == pytest.approx(9.0)
 
 
 def test_multiple_records() -> None:
@@ -50,3 +51,29 @@ def test_negative_value_rejected() -> None:
     }
     with pytest.raises(ValueError):
         calculate_indicators(record)
+
+
+def test_npl_cannot_exceed_gross_loans() -> None:
+    record = {
+        "bank": "Test Bank",
+        "gross_loans": 1000.0,
+        "npl": 1200.0,
+        "capital": 150.0,
+        "risk_weighted_assets": 900.0,
+    }
+    with pytest.raises(ValueError, match="npl cannot exceed gross_loans"):
+        calculate_indicators(record)
+
+
+def test_zero_npl_is_valid_and_ratio_unavailable() -> None:
+    record = {
+        "bank": "Test Bank",
+        "gross_loans": 1000.0,
+        "npl": 0.0,
+        "capital": 150.0,
+        "risk_weighted_assets": 1000.0,
+    }
+    result = calculate_indicators(record)
+    assert result["npl_ratio_pct"] == pytest.approx(0.0)
+    assert result["capital_ratio_pct"] == pytest.approx(15.0)
+    assert result["performing_to_npl_ratio"] is None
