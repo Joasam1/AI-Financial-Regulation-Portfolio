@@ -1,6 +1,6 @@
 # Exercise 01 Reflection
 
-**Status:** Conceptual work completed; execution/independent rerun still to be recorded
+**Status:** Guided conceptual work completed; local automated tests passed (user-reported, 2026-10-10). Independent modification practice remains ongoing.
 
 ## 1. Explain the program in my own words
 
@@ -45,4 +45,17 @@ Data validation should distinguish between observations that are impossible unde
 
 ## 8. What I still need to understand
 
-The next learning step is to run and modify the code independently, strengthen familiarity with Python syntax, and then move from lists/dictionaries toward NumPy and pandas for larger datasets.
+The automated test suite has now been run locally, with all six tests reported as passing. The next learning step is to modify the code independently, strengthen familiarity with Python syntax, and then move from lists/dictionaries toward NumPy and pandas for larger datasets.
+
+## 9. Local test evidence (2026-10-10)
+
+The learner reported running `python -m pytest test_exercise_01.py -v` locally. The following six tests were reported **PASSED**:
+
+- `test_calculate_indicators`
+- `test_multiple_records`
+- `test_zero_denominator_rejected`
+- `test_negative_value_rejected`
+- `test_npl_cannot_exceed_gross_loans`
+- `test_zero_npl_is_valid_and_ratio_unavailable`
+
+**Result: 6 passed, 0 failed (user-reported).** No CI run or machine-generated test artifact is attached to this record.
