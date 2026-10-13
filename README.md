@@ -28,7 +28,9 @@ The portfolio is intentionally developmental. Projects will be added and strengt
 ### Financial Supervision Early-Warning ML
 Machine-learning workflows for identifying deterioration in lending standards and supporting risk-based supervision.
 
-**Status:** Development pathway
+**Current project:** [Domingos's 12 Lessons — Synthetic Banking EWS Lab](experiments/banking-supervision-ews/README.md), covering data generation, engineered indicators, chronological validation, model comparison, ensemble methods and model-governance safeguards.
+
+**Status:** Synthetic-data learning laboratory; real supervisory validation not yet undertaken.
 
 ### Regulatory RAG & Evaluation
 Retrieval-augmented generation over financial-regulatory material, with emphasis on provenance, retrieval quality, citation faithfulness and reproducibility.
