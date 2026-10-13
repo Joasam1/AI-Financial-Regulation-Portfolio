@@ -1,0 +1,53 @@
+# Banking Supervision ML — Domingos's 12 Lessons
+
+**Status:** Synthetic-data learning laboratory (October 2026)  
+**Research area:** Banking supervision, machine learning, early-warning systems
+
+## Purpose
+
+Translate the twelve lessons in Pedro Domingos (2012), *A Few Useful Things to Know About Machine Learning*, into a reproducible banking-distress early-warning workflow.
+
+The companion Jupyter notebook, `Banking_Supervision_ML_12_Lessons_Lab.ipynb`, was developed in the ChatGPT working session. It uses a **fully synthetic** monthly panel of 30 banks over 96 months; the data and distress events do not represent real institutions or observed bank failures.
+
+## Experimental workflow
+
+1. Generate synthetic bank-month data with capital, NPL, liquidity, profitability, credit growth, deposit concentration and macro stress.
+2. Engineer point-in-time changes, moving averages, threshold gaps and interaction features.
+3. Define a six-month-ahead synthetic distress target.
+4. Apply chronological train/validation/test splits with a six-month label embargo.
+5. Compare regularized logistic regression, random forest and gradient boosting.
+6. Evaluate PR-AUC, ROC-AUC, Brier score, recall, precision, calibration and confusion matrices.
+7. Explore ensembles, model complexity, dimensionality, PCA, learning curves, multiple testing, PAC bounds, XOR and confounding.
+8. Produce a governance checklist for eventual use with approved supervisory datasets.
+
+## Reproducibility
+
+Suggested environment: Python 3.10+, JupyterLab, NumPy, pandas, scikit-learn and matplotlib.
+
+```bash
+python -m pip install jupyterlab numpy pandas scikit-learn matplotlib
+python -m jupyter lab
+```
+
+Run the notebook top to bottom. Its CSV outputs contain **synthetic experimental results only**.
+
+## Evidence standard and limitations
+
+- This is a teaching simulation, not an empirically validated distress-prediction model.
+- No confidential supervisory records are used or required.
+- Performance metrics from synthetic data are not evidence of predictive performance on actual banks.
+- Model selection must occur on validation data, with the test set reserved for final evaluation.
+- A production research design needs reporting-vintage controls, institution-level dependence, overlapping-horizon treatment, rolling-origin evaluation, drift checks and explicit supervisory governance.
+- Predictive feature importance must not be interpreted as causal effect.
+
+## Next milestones
+
+- [ ] Upload and independently rerun the full notebook in this project folder.
+- [ ] Pin environment dependencies and document exact package versions.
+- [ ] Add unit tests for target-window and split-leakage logic.
+- [ ] Extend evaluation to repeated rolling-origin backtests.
+- [ ] Draft a formal distress-event definition and data dictionary for any approved real-data application.
+
+**Reference:** Domingos, P. (2012). A Few Useful Things to Know About Machine Learning. *Communications of the ACM*, 55(10), 78–87. https://doi.org/10.1145/2347736.2347755
+
+*Personal research and learning portfolio; not an employer or institutional publication.*
